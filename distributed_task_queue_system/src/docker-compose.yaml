@@ -1,9 +1,16 @@
 version: '3.7'
+
+networks:
+  task-queue-network:
+      driver: bridge
+
 services:
   redis:
     image: redis:latest
     ports:
       - "6379:6379"
+    networks:
+      - task-queue-network
 
   worker1:
     build: .
@@ -12,6 +19,8 @@ services:
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
     depends_on:
       - redis
+    networks:
+      - task-queue-network
 
   worker2:
     build: .
@@ -20,6 +29,8 @@ services:
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
     depends_on:
       - redis
+    networks:
+      - task-queue-network
 
   worker3:
     build: .
@@ -28,3 +39,5 @@ services:
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
     depends_on:
       - redis
+    networks:
+        - task-queue-network
