@@ -19,5 +19,18 @@ Acts like postal workers, picks up mail and delivers (aka executes tasks) it:
  - `docker logs container_name`: Shows logs of container with name 'container_name'. With option '-f' it monitors and follows log-output.
  - `docker rm container_name`: Remove the container. Use `-f` if the container is running.
  - `docker rmi container_image`: Remove the container-image or a list of images.
- - `dcoker network ls/rm`: `ls` Show networks. `rm` deletes a network.  
- - 
+ - `dcoker network ls/rm`: `ls` Show networks. `rm` deletes a network.
+
+# Ideas:
+ - First step projects:
+   - Analyze the Hacker News dataset. Split data cleaning and analysis over two different workers?
+     - Questions:
+       - How many comments do "Ask HN" entries receive on average?
+       - How many comments do "Show HN" entries receive on average?
+       - What is the percentage of https-url's in the dataset?
+       - Which of the following websites has been visited most
+         - https://www.facebook.com
+         - https://www.washingtonpost.com
+         - https://www.theguardian.com/
+         - http://www.theguardian.com/
+ -
