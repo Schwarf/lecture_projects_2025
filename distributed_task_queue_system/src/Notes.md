@@ -22,7 +22,7 @@ Acts like postal workers, picks up mail and delivers (aka executes tasks) it:
  - `dcoker network ls/rm`: `ls` Show networks. `rm` deletes a network.
 
 # Ideas:
- - First step projects:
+ - First step project:
    - Analyze the Hacker News dataset. Split data cleaning and analysis over two different workers?
      - Questions:
        - How many comments do "Ask HN" entries receive on average?
@@ -33,4 +33,4 @@ Acts like postal workers, picks up mail and delivers (aka executes tasks) it:
          - https://www.washingtonpost.com
          - https://www.theguardian.com/
          - http://www.theguardian.com/
- -
+- Main project ?
