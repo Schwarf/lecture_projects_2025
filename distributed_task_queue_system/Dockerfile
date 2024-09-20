@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 COPY . .
 
 # Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir celery redis
+RUN pip install --no-cache-dir celery redis pandas
 
 # Run Celery worker on container startup
 CMD ["celery", "-A", "src.celery_app", "worker", "--loglevel=info"]

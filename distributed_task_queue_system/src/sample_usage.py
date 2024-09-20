@@ -1,5 +1,6 @@
 import redis
 from src.add.tasks import add
+from src.clean_data.tasks import clean_data
 
 try:
     client = redis.Redis(host='localhost', port=6379, db=0)
@@ -11,5 +12,3 @@ except Exception as e:
 for i in range(1, 10):
     result = add.delay(4+i, 4)
     print(result.get(timeout=10))  # Should print 8
-
-
