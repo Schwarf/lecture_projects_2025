@@ -1,5 +1,5 @@
 import pandas as pd
-from src.data_cleaning import clean_data
+from src.data_cleaning_tasks import clean_data
 from unittest.mock import patch
 
 

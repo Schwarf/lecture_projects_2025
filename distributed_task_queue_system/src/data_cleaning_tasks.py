@@ -1,8 +1,4 @@
-from celery import Celery
-
-app = Celery('data_tasks',
-             broker='redis://localhost:6379/0',
-             backend='redis://localhost:6379/0')
+from celery_app import app
 
 
 @app.task

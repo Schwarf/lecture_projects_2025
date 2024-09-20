@@ -1,4 +1,5 @@
 import redis
+from src.celery_app import app
 from src.add_task import add
 
 try:
@@ -11,3 +12,5 @@ except Exception as e:
 for i in range(1, 10):
     result = add.delay(4+i, 4)
     print(result.get(timeout=10))  # Should print 8
+
+
