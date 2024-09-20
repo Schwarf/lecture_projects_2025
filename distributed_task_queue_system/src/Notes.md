@@ -34,3 +34,10 @@ Acts like postal workers, picks up mail and delivers (aka executes tasks) it:
          - https://www.theguardian.com/
          - http://www.theguardian.com/
 - Main project ?
+
+
+# Lessons learned
+- It is crucial that all paths are carefully checked and synced.
+  - The `COPY` statement in the `Dockerfile` copies from the current folder (in the docker file) to the target work-dir defined above.
+  - The `build` statement in the `docker-compose` file (for each worker) provides the location of the `Dockerfile`
+  - The celery config (see `add_task.py`) contains the full path for the tasks `src.add_task`.
