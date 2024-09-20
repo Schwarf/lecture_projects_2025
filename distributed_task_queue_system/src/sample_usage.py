@@ -1,6 +1,5 @@
 import redis
-from src.celery_app import app
-from src.add_task import add
+from src.add.tasks import add
 
 try:
     client = redis.Redis(host='localhost', port=6379, db=0)

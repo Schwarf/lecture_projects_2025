@@ -1,6 +1,5 @@
 # test_tasks.py
-import pytest
-from src.add_task import add
+from src.add.tasks import add
 
 
 # celery_app and celery_worker are fixtures provided by celery.contrib.pytest
