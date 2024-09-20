@@ -15,7 +15,7 @@ services:
   worker1:
     build: .
     volumes:
-      - /media/linux_data/data/:/usr/src/app/data
+      - /media/linux_data/data/lecture_2025_data/hacker_news:/usr/src/app/container_data/
     environment:
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
@@ -27,7 +27,7 @@ services:
   worker2:
     build: .
     volumes:
-      - /media/linux_data/data/:/usr/src/app/data
+      - /media/linux_data/data/lecture_2025_data/hacker_news:/usr/src/app/container_data/
     environment:
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
@@ -39,7 +39,7 @@ services:
   worker3:
     build: .
     volumes:
-      - /media/linux_data/data/:/usr/src/app/data
+      - /media/linux_data/data/lecture_2025_data/hacker_news:/usr/src/app/container_data/
     environment:
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
