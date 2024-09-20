@@ -1,6 +1,5 @@
 import pandas as pd
-from src.data_cleaning_tasks import clean_data
-from unittest.mock import patch
+from clean_data.tasks import clean_data
 
 
 def test_clean_data(mocker):
