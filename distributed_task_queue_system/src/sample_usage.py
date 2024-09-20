@@ -12,3 +12,8 @@ except Exception as e:
 for i in range(1, 10):
     result = add.delay(4+i, 4)
     print(result.get(timeout=10))  # Should print 8
+
+
+file_path = "/usr/src/app/data/lecture_2025_data/hacker_news/hacker_news.csv"
+cleaned_data = clean_data.delay(file_path)
+
