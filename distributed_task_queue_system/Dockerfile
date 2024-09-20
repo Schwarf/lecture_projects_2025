@@ -11,4 +11,4 @@ COPY . .
 RUN pip install --no-cache-dir celery redis
 
 # Run Celery worker on container startup
-CMD ["celery", "-A", "add_task", "worker", "--loglevel=info"]
+CMD ["celery", "-A", "src.add_task", "worker", "--loglevel=info"]
