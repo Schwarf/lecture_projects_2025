@@ -1,5 +1,5 @@
 import redis
-from src.data_processing.tasks import process_file
+from src.data_processing.tasks import average_computation, select_ask_HN, select_show_HN
 
 
 def start_subscriber():
@@ -11,5 +11,9 @@ def start_subscriber():
         if message['type'] == 'message':
             file_path = message['data'].decode('utf-8')
             # Call the task that needs the file
-            process_file.delay(file_path)
+            #process_file.delay(file_path)
+            average_computation.delay(file_path, "comments", "Ask HN")
+            average_computation.delay(file_path, "comments", "Show HN")
+
+
 
