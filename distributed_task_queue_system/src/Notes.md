@@ -24,15 +24,17 @@ Acts like postal workers, picks up mail and delivers (aka executes tasks) it:
 # Ideas:
  - First step project:
    - Analyze the Hacker News dataset. Split data cleaning and analysis over two different workers?
-     - Questions:
-       - How many comments do "Ask HN" entries receive on average?
-       - How many comments do "Show HN" entries receive on average?
-       - What is the percentage of https-url's in the dataset?
-       - Which of the following websites has been visited most
-         - https://www.facebook.com
-         - https://www.washingtonpost.com
-         - https://www.theguardian.com/
-         - http://www.theguardian.com/
+   - Clean the data:
+     - Remove all entries that provide an empty URL. 
+   - Questions regarding the cleaned dataset:
+     - What is the average number of comments received by entries with titles containing "Ask HN"?
+     - What is the average number of comments received by entries with titles containing "Show HN"?
+     - What is the percentage of https-url's in the dataset?
+     - Which of the following websites has been visited most
+       - https://www.facebook.com
+       - https://www.washingtonpost.com
+       - https://www.theguardian.com/
+       - http://www.theguardian.com/
 - Main project ?
 
 
