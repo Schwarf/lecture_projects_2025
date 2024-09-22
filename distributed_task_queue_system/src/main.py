@@ -8,7 +8,8 @@ from src.add.tasks import add
 from src.clean_data.tasks import clean_data
 from data_processing.subscribers.subscriber import start_subscriber
 
-if __name__ == "__main__":
+
+def main():
     # Start the subscriber in a separate thread
     # thread = threading.Thread(target=start_subscriber)
     # thread.start()
@@ -32,3 +33,7 @@ if __name__ == "__main__":
     subscriber_greenlet.join()
     # Wait for the subscriber thread to finish (it won't unless the program exits or an exception occurs)
     # thread.join()
+
+
+if __name__ == "__main__":
+    main()
