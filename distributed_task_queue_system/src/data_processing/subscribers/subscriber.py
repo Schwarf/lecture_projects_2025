@@ -14,6 +14,6 @@ def start_subscriber():
             #process_file.delay(file_path)
             average_computation.delay(file_path, "num_comments", "Ask HN")
             average_computation.delay(file_path, "num_comments", "Show HN")
-
+            
 
 

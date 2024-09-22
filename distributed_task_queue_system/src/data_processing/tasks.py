@@ -1,4 +1,5 @@
 from typing import Callable, Dict
+from src.data_processing.publishing.events import store_average_value, publish_event
 import pandas as pd
 from src.celery_app import app
 
@@ -14,4 +15,7 @@ def average_computation(
         return -1
     df = df[df['title'].str.contains(selection_type)]
     average_comments = df[target_column_head].mean()
+    result_key = f"average:{selection_type}:{target_column_head}"
+    store_average_value(average_comments, result_key)
+    publish_event("average_computation_done", result_key)
     return average_comments
