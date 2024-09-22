@@ -6,7 +6,7 @@ monkey.patch_all()
 import redis
 from src.add.tasks import add
 from src.clean_data.tasks import clean_data
-from data_processing.subscribers.subscriber import start_subscriber
+from data_processing.subscribers.subscriber import subscriber
 
 
 def main():
@@ -14,7 +14,7 @@ def main():
     # thread = threading.Thread(target=start_subscriber)
     # thread.start()
 
-    subscriber_greenlet = gevent.spawn(start_subscriber)
+    subscriber_greenlet = gevent.spawn(subscriber)
     try:
         client = redis.Redis(host='localhost', port=6379, db=0)
         response = client.ping()
