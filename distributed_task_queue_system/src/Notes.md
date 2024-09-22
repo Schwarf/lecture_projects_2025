@@ -33,8 +33,8 @@ Acts like postal workers, picks up mail and delivers (aka executes tasks) it:
      - Which of the following websites has been visited most
        - https://www.facebook.com
        - https://www.washingtonpost.com
-       - https://www.theguardian.com/
-       - http://www.theguardian.com/
+       - https://www.theguardian.com
+       - http://www.theguardian.com
 - Main project ?
 
 

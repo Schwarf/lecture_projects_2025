@@ -1,5 +1,5 @@
 import redis
-from src.data_processing.tasks import average_computation, https_url_percentage
+from src.data_processing.tasks import average_computation, https_url_percentage, count_website_visits
 
 
 def subscriber():
@@ -14,9 +14,10 @@ def subscriber():
 
             if channel == "computation_done":  # Break the loop when both computations are done
                 count_average_computations += 1
-                if count_average_computations == 3:
+                if count_average_computations == 4:
                     break
             elif channel == "cleaned_data_created":  # When the cleaned data is available start the data processing
                 average_computation.delay(data, "num_comments", "Ask HN")
                 average_computation.delay(data, "num_comments", "Show HN")
                 https_url_percentage.delay(data)
+                count_website_visits.delay(data)
