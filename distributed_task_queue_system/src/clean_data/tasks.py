@@ -1,6 +1,7 @@
 from src.celery_app import app
 import redis
 
+
 @app.task
 def clean_data(file_path):
     import pandas as pd

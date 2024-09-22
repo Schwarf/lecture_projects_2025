@@ -1,5 +1,5 @@
 import redis
-from src.data_processing.tasks import average_computation, select_ask_HN, select_show_HN
+from src.data_processing.tasks import average_computation
 
 
 def start_subscriber():
@@ -12,8 +12,8 @@ def start_subscriber():
             file_path = message['data'].decode('utf-8')
             # Call the task that needs the file
             #process_file.delay(file_path)
-            average_computation.delay(file_path, "comments", "Ask HN")
-            average_computation.delay(file_path, "comments", "Show HN")
+            average_computation.delay(file_path, "num_comments", "Ask HN")
+            average_computation.delay(file_path, "num_comments", "Show HN")
 
 
 
