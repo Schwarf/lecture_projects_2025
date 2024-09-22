@@ -2,7 +2,7 @@ import threading
 import redis
 from src.add.tasks import add
 from src.clean_data.tasks import clean_data
-from src.data_processing.subscriber import start_subscriber
+from data_processing.subscribers.subscriber import start_subscriber
 
 if __name__ == "__main__":
     # Start the subscriber in a separate thread
