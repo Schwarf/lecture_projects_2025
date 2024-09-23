@@ -1,4 +1,5 @@
 import time
+import random
 
 from kafka import KafkaProducer
 from src.simulated_temperature_sensor.temperature_sensor import simulate_temperature_with_outliers
@@ -14,10 +15,11 @@ def send_data_to_kafka(topic) -> None:
     producer = get_kafka_producer()
     temperature_sensor = simulate_temperature_with_outliers()
     for reading in temperature_sensor:
-        message = {"temperature": reading, "timestamp": time.time()}
+        message = {"temperature": reading}
         producer.send(topic, message)
         producer.flush()
-        time.sleep(1)
+        sleep_time = random.randint(2, 10)
+        time.sleep(sleep_time)
 
 
 if __name__ == "__main__":

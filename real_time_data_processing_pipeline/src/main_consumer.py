@@ -1,5 +1,6 @@
-from datetime import datetime, timedelta, timezone
+import time
 from kafka import KafkaConsumer
+from datetime import datetime
 import json
 
 
@@ -9,44 +10,37 @@ def create_consumer():
         bootstrap_servers='localhost:9092',
         auto_offset_reset='earliest',
         value_deserializer=lambda x: json.loads(x.decode('utf-8')),
-        consumer_timeout_ms=20000  # Stop iteration if no message after 2000 ms
+        consumer_timeout_ms=20000  # Stop iteration if no message after 20 seconds
     )
 
 
 def process_temperatures():
     consumer = create_consumer()
-    start_time = datetime.utcnow().replace(tzinfo=timezone.utc)
-    end_time = start_time + timedelta(minutes=1)
+    next_run_time = time.time() + 30
 
     temperatures = []
 
     try:
-        for message in consumer:
-            temperature = message.value['temperature']
-            timestamp = message.value['timestamp']
-            message_time = datetime.fromtimestamp(timestamp, tz=timezone.utc)
+        while True:
+            for message in consumer.poll(timeout_ms=1000).values():
+                for payload in message:
+                    temperature = payload.value["temperature"]
+                    temperatures.append(temperature)
 
-            print(f"Received: {temperature} at {message_time}")  # Debug print
-
-            # Add temperature to list
-            temperatures.append(temperature)
-
-            # Check if the current message is still within the current minute
-            if message_time >= end_time:
+            current_time = time.time()
+            if current_time >= next_run_time:
                 if temperatures:
-                    # Compute statistics
-                    average_temp = sum(temperatures) / len(temperatures)
-                    max_temp = max(temperatures)
-                    min_temp = min(temperatures)
-
+                    average_temperature = sum(temperatures) / len(temperatures)
+                    max_temperature = max(temperatures)
+                    min_temperature = min(temperatures)
                     # Print the results
+                    current_time_dt = datetime.fromtimestamp(current_time)
                     print(
-                        f"Average Temp: {average_temp:.2f} °C, Max Temp: {max_temp} °C, Min Temp: {min_temp} °C for minute ending at {end_time.strftime('%Y-%m-%d %H:%M:%S')}")
+                        f"Average Temp: {average_temperature:.2f} °C, Max Temp: {max_temperature} °C, Min Temp: {min_temperature} °C for minute ending at {current_time_dt.strftime('%Y-%m-%d %H:%M:%S')}")
 
-                # Reset for the next minute
-                temperatures = []
-                start_time = message_time
-                end_time = start_time + timedelta(minutes=1)
+                next_run_time += 30  # Schedule next run
+                temperatures = []  # Reset temperatures list
+
 
     except KeyboardInterrupt:
         print("Stopped by the user.")
