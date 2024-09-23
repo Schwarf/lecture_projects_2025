@@ -1,5 +1,5 @@
 from typing import Callable, Dict
-from src.data_processing.publishing.events import store_average_value, publish_event
+from src.data_processing.publishers.events import store_average_value, publish_event
 import pandas as pd
 import re
 from src.celery_app import app

@@ -1,5 +1,5 @@
 from src.celery_app import app
-from src.clean_data.publishing.events import publish_cleaned_data_created
+from src.clean_data.publishers.events import publish_cleaned_data_created
 import redis
 
 
