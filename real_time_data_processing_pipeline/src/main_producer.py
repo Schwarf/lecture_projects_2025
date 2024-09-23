@@ -19,3 +19,6 @@ def send_data_to_kafka(topic) -> None:
         producer.flush()
         time.sleep(1)
 
+
+if __name__ == "__main__":
+    send_data_to_kafka('sensor_data')
