@@ -33,29 +33,24 @@ def https_url_percentage(file_path: str) -> float:
 
 
 @app.task
-def count_website_visits(file_path: str) -> dict:
+def count_website_visits(file_path: str) -> Dict[str, int]:
     df = pd.read_csv(file_path)
 
-    # Define patterns that match the domains you are interested in
-    patterns = [
-        r"https?://(www\.)?facebook\.com",
-        r"https?://(www\.)?washingtonpost\.com",
-        r"https?://(www\.)?theguardian\.com",
-        r"http?://(www\.)?theguardian\.com"
+    # Define the URLs of interest
+    urls_to_track = [
+        "https://www.facebook.com",
+        "https://www.washingtonpost.com",
+        "https://www.theguardian.com",
+        "http://www.theguardian.com"
     ]
 
-    # Filter URLs based on the patterns
-    df_relevant_urls = df[df['url'].apply(lambda x: any(re.search(pattern, x) for pattern in patterns))]
+    # Filter the DataFrame to only include relevant URLs
+    filtered_df = df[df['url'].apply(lambda x: any(url in x for url in urls_to_track))]
 
-    # TODO
-    # Currently only https is counted. No distinction between http and https for guardian case.
-    # Normalize and extract the root domain from each URL for counting
-    df_relevant_urls['base_url'] = df_relevant_urls['url'].apply(
-        lambda x: re.search(r"https?://(www\.)?([^/]+)", x).group(2) if re.search(r"https?://(www\.)?([^/]+)", x) else x
-    )
+    # Count visits for each URL
+    visit_counts = {url: int(filtered_df['url'].str.contains(url).sum()) for url in urls_to_track}
 
-    counts = Counter(df_relevant_urls['base_url'])
-    sorted_counts = dict(sorted(counts.items(), key=lambda item: item[1], reverse=True))
+    sorted_counts = dict(sorted(visit_counts.items(), key=lambda item: item[1], reverse=True))
 
     publish_event("computation_done", "Website visit counts computed.")
     return sorted_counts
