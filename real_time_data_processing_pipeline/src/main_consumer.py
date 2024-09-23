@@ -41,7 +41,6 @@ def process_temperatures():
                 next_run_time += 30  # Schedule next run
                 temperatures = []  # Reset temperatures list
 
-
     except KeyboardInterrupt:
         print("Stopped by the user.")
 
