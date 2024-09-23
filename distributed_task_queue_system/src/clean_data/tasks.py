@@ -1,10 +1,9 @@
 from src.celery_app import app
 from src.clean_data.publishers.events import publish_cleaned_data_created
-import redis
 
 
 @app.task
-def clean_data(file_path):
+def clean_data(file_path: str):
     import pandas as pd
     # Read the CSV file
     df = pd.read_csv(file_path)

@@ -2,7 +2,7 @@ import redis
 from src.data_processing.tasks import average_computation, https_url_percentage, count_website_visits
 
 
-def subscriber():
+def subscriber() -> None:
     redis_client = redis.Redis(host='localhost', port=6379, db=0)
     pubsub = redis_client.pubsub()
     pubsub.subscribe('cleaned_data_created', 'computation_done')

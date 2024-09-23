@@ -1,15 +1,15 @@
 import gevent
 # import threading
 from gevent import monkey
-monkey.patch_all()
-
 import redis
 from src.add.tasks import add
 from src.clean_data.tasks import clean_data
 from data_processing.subscribers.subscriber import subscriber
 
+monkey.patch_all()
 
-def main():
+
+def main() -> None:
     # Start the subscriber in a separate thread
     # thread = threading.Thread(target=start_subscriber)
     # thread.start()
