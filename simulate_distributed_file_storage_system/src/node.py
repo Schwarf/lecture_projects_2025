@@ -5,7 +5,10 @@ from typing import Dict, Optional
 
 class Node:
     def __init__(self, node_id: str, storage_dir: str):
-        pass
+        self.id = node_id
+        self.storage_dir = storage_dir
+        self.is_online = True
+
 
     def make_leader(self) -> None:
         pass
