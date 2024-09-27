@@ -8,7 +8,7 @@ Eleven lectures, one lecture per week, each lecture 3 hours long.
 #### 4. Comments
 #### 5. Objects and data structures
 
-### Test
+### Tests
 #### 1. Why should I care?
 - Importance of testing in software development.
 - How tests improve code quality and reliability.
@@ -30,4 +30,28 @@ Eleven lectures, one lecture per week, each lecture 3 hours long.
 - Importance of automating tests.
 - Tools and frameworks for test automation.
 - Continuous Integration and automated testing.
+
+
+### Algorithms
+#### 1. Basic data structures
+- Stack
+- Queue
+- Linked list
+- Hash tables
+#### 2. Sorting algorithms
+- Bubble sort
+- Insertion sort
+- Merge sort
+- Quicksort
+#### 3. Binary search
+- Linear search
+- Binary search
+#### 4. More data structures
+- Heaps
+- Trees
+- Binary search trees
+#### 5. Backtracking
+#### 6. Dynamic programming
+
+
 
