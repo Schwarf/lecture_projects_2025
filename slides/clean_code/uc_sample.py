@@ -1,20 +1,16 @@
 from math import sqrt
 
 
-def compute(a, b, c):
-    if a == 0:
-        if b == 0:
+def compute(a1, a2, a3):
+    if a1 == 0:
+        if a2 == 0:
             return None
-        return -c / b,
+        return -a3 / a2,
 
-    p = b / a
-    q = c / a
-    d = p*p/4 - q
-    if d < 0:
+    a4 = a2 / a1 * a2 / a1 / 4 - a3 / a1
+    if a4 < 0:
         return None,
-    elif d == 0:
-        return -p / 2,
+    elif a4 == 0:
+        return -a2 / a1 / 2,
     else:
-        x1 = -p / 2 + sqrt(d)
-        x2 = -p / 2 - sqrt(d)
-        return x1, x2
+        return -a2 / a1 / 2 + sqrt(a4), -a2 / a1 / 2 - sqrt(a4)
