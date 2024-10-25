@@ -2,36 +2,8 @@
 d = 86400
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# BETTER: A slightly better name, but it's still not very clear
+# MUCH BETTER: A better name, but it's still not very clear
 seconds_in_a_day = 86400
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # GOOD: The name makes the intent explicit
