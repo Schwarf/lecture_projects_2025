@@ -5,8 +5,8 @@ Eleven lectures, one lecture per week, each lecture 3 hours long.
 #### 1. Why should I care?
 #### 2. Meaningful names
 #### 3. Functions
-#### 4. Comments
-#### 5. Coding guidelines
+#### 4. Classes 
+#### 5. Coding guidelines (for python)
 
 
 ### Tests (6h)
