@@ -1,4 +1,4 @@
-from math import sqrt
+from math import *
 
 def linear_equation_solver(linear_coefficient, constant):
     if linear_coefficient == 0:

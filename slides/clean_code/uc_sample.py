@@ -1,4 +1,4 @@
-from math import sqrt
+from math import *
 
 
 def compute(a1, a2, a3):

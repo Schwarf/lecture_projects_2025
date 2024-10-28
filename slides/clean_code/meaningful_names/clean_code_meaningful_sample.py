@@ -1,4 +1,4 @@
-from math import sqrt
+from math import *
 
 
 def quadratic_equation_solver(quadratic_coefficient, linear_coefficient, constant):
