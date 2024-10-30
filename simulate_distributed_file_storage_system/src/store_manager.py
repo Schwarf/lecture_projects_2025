@@ -1,7 +1,5 @@
 from typing import Optional
 
-from src.node import Node
-
 
 class StorageManager:
     def __init__(self, storage_dir: str):
@@ -19,9 +17,3 @@ class StorageManager:
         if chunk_id in self._storage:
             del self._storage[chunk_id]
             print(f"Deleted chunk {chunk_id} from {self.storage_dir}")
-
-    def replicate_chunk(self, chunk_id: str, target_node: Node) -> None:
-        chunk_data = self.retrieve_chunk(chunk_id)
-        if chunk_data:
-            target_node.storage_manager.store_chunk(chunk_id, chunk_data)
-            print(f"Replicated chunk {chunk_id} to node {target_node.id}")

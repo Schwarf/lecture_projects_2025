@@ -10,3 +10,8 @@ class Node:
         self.storage_manager = StorageManager(storage_dir)
 
 
+    def replicate_chunk(self, chunk_id: str, target_node: 'Node') -> None:
+        chunk_data = self.storage_manager.retrieve_chunk(chunk_id)
+        if chunk_data:
+            target_node.storage_manager.store_chunk(chunk_id, chunk_data)
+            print(f"Replicated chunk {chunk_id} to node {target_node.id}")
