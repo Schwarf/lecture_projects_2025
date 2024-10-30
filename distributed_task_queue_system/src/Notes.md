@@ -41,3 +41,8 @@ Acts like postal workers, picks up mail and delivers (aka executes tasks) it:
 # Lessons learned
 - It is crucial that all paths are carefully checked and synced.
   - sudo chmod -R 777 "the_data_folder" so the docker-user can write and read it.
+
+
+# Entry point
+ - Startup-project: `main.py`
+ - Real project: `celery_app.py`
