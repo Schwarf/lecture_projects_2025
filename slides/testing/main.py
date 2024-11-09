@@ -3,10 +3,13 @@
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
+from unit_test_production_code import quadratic_equation_solver
 
 def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+    a = 10**(-11)
+    b = 100
+    c = 1
+    print(quadratic_equation_solver(a, b, c))
 
 
 # Press the green button in the gutter to run the script.
