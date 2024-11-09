@@ -1,6 +1,6 @@
 import pytest
 
-from testing.unit_test_production_code import linear_equation_solver
+from testing.unit_tests.src.production_code import linear_equation_solver
 
 
 # Test for a positive solution

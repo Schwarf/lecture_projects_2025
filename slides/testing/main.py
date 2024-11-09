@@ -3,7 +3,7 @@
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
-from unit_test_production_code import quadratic_equation_solver
+from testing.unit_tests.src.production_code import quadratic_equation_solver
 
 def print_hi(name):
     a = 10**(-11)
