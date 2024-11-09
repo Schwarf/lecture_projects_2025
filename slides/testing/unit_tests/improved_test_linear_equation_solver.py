@@ -2,7 +2,7 @@ from math import sqrt, log, sin, cos
 
 import pytest
 
-from testing.production_code import linear_equation_solver
+from testing.unit_test_production_code import linear_equation_solver
 
 
 # Test for when the coefficient is zero
