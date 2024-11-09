@@ -1,5 +1,6 @@
-from testing.production_code import linear_equation_solver
 import pytest
+
+from testing.production_code import linear_equation_solver
 
 
 # Test for a positive solution
@@ -13,6 +14,7 @@ def test_linear_equation_solver_with_positive_coefficient_and_constant():
     # Assert
     assert result == expected_result
 
+
 # Test for a negative solution
 def test_linear_equation_solver_with_negative_coefficient_and_positive_constant():
     # Arrange
@@ -24,6 +26,7 @@ def test_linear_equation_solver_with_negative_coefficient_and_positive_constant(
     # Assert
     assert result == expected_result
 
+
 # Test for zero constant, should return 0 regardless of coefficient
 def test_linear_equation_solver_with_zero_constant_returns_zero():
     # Arrange
@@ -34,6 +37,7 @@ def test_linear_equation_solver_with_zero_constant_returns_zero():
     result = linear_equation_solver(linear_coefficient, constant)
     # Assert
     assert result == expected_result
+
 
 # Test for non-integer solution
 def test_linear_equation_solver_with_non_integer_solution():

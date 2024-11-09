@@ -1,6 +1,9 @@
+from math import sqrt, log, sin, cos
+
 import pytest
-from math import sqrt, log, sin, cos, pi
+
 from testing.production_code import linear_equation_solver
+
 
 # Test for when the coefficient is zero
 @pytest.mark.parametrize(
@@ -18,6 +21,7 @@ def test_linear_equation_solver_zero_coefficient(linear_coefficient, constant):
     result = linear_equation_solver(linear_coefficient, constant)
     assert result == expected_result
 
+
 # Test for positive solution
 @pytest.mark.parametrize(
     "linear_coefficient, constant",
@@ -33,6 +37,7 @@ def test_linear_equation_solver_positive_solution(linear_coefficient, constant):
     expected_result = -constant / linear_coefficient
     result = linear_equation_solver(linear_coefficient, constant)
     assert result == expected_result
+
 
 # Test for negative solution
 @pytest.mark.parametrize(
@@ -50,6 +55,7 @@ def test_linear_equation_solver_negative_solution(linear_coefficient, constant):
     result = linear_equation_solver(linear_coefficient, constant)
     assert result == expected_result
 
+
 # Test for zero constant
 @pytest.mark.parametrize(
     "linear_coefficient, constant",
@@ -66,6 +72,7 @@ def test_linear_equation_solver_zero_constant(linear_coefficient, constant):
     result = linear_equation_solver(linear_coefficient, constant)
     assert result == expected_result
 
+
 # Test for non-integer solution
 @pytest.mark.parametrize(
     "linear_coefficient, constant",
@@ -81,6 +88,7 @@ def test_linear_equation_solver_non_integer_solution(linear_coefficient, constan
     expected_result = -constant / linear_coefficient
     result = linear_equation_solver(linear_coefficient, constant)
     assert result == pytest.approx(expected_result)
+
 
 # Test for general float inputs
 @pytest.mark.parametrize(
