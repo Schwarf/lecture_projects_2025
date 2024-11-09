@@ -2,7 +2,7 @@ from math import *
 from typing import Tuple, Union
 
 
-class RCCircuitEquationSolver:
+class RLCEquationSolver:
 
     def __init__(self, quadratic_coefficient: float, linear_coefficient: float, constant: float):
         self._quadratic_coefficient = quadratic_coefficient
