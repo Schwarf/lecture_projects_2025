@@ -30,4 +30,4 @@ def test_linear_equation_solver_typical_cases_only():
 
 def test_linear_equation_solver_without_setup():
     assert linear_equation_solver(1, 1) == -1  # Lack of consistent setup structure
-    assert linear_equation_solver(-5, 15) == 3.0
+    assert linear_equation_solver(-5, 15) == 3
