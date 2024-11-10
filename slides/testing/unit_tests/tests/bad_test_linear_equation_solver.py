@@ -1,4 +1,4 @@
-from testing.unit_tests.src.production_code import linear_equation_solver
+from unit_tests.src.production_code import linear_equation_solver
 
 
 # Testing multiple behaviors in a single test
