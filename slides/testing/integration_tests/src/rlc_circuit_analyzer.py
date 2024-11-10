@@ -1,46 +1,37 @@
+from typing import Tuple, Union
+from equation_solver import EquationSolver
+
 class RLCCircuitAnalyzer:
-    def __init__(self, resistance, capacitance, initial_voltage=5.0):
-        """
-        Initializes the RC Circuit Analyzer.
+    def __init__(self, resistance: float, inductance: float, capacitance: float):
+        self.resistance = resistance
+        self.inductance = inductance
+        self.capacitance = capacitance
 
-        Parameters:
-        - resistance (float): Resistance in ohms (Ω).
-        - capacitance (float): Capacitance in farads (F).
-        - initial_voltage (float): Initial voltage across the capacitor (default is 5.0V).
-        """
-        self.R = resistance
-        self.C = capacitance
-        self.initial_voltage = initial_voltage
-        self.time_constant = self.R * self.C
+    def analyze_resonance(self) -> Union[None, float, Tuple[float, float]]:
+        # Define the coefficients for the quadratic equation: a * ω^2 + b * ω + c = 0
+        a = self.inductance * self.capacitance
+        b = self.resistance
+        c = 1
 
-    def get_time_constant(self):
-        """Calculates and returns the time constant τ (tau) of the RC circuit."""
-        return self.time_constant
+        # Initialize the solver with the coefficients
+        solver = EquationSolver(a, b, c)
 
-    def voltage_at_time(self, time):
-        """
-        Calculates the voltage across the capacitor at a given time during charging.
+        # Solve for resonant frequencies
+        return solver.solve()
 
-        Parameters:
-        - time (float): Time in seconds.
+# Example usage:
+if __name__ == "__main__":
+    # Example circuit values
+    R = 100  # Resistance in ohms
+    L = 1e-3  # Inductance in henries
+    C = 10e-9  # Capacitance in farads
 
-        Returns:
-        - voltage (float): Voltage across the capacitor at the specified time.
-        """
-        return self.initial_voltage * (1 - np.exp(-time / self.time_constant))
+    analyzer = RLCCircuitAnalyzer(R, L, C)
+    resonance_frequencies = analyzer.analyze_resonance()
 
-    def simulate_charging(self, duration, steps=100):
-        """
-        Simulates and prints the capacitor charging process over a specified duration.
-
-        Parameters:
-        - duration (float): Total simulation time in seconds.
-        - steps (int): Number of time steps for the simulation (default is 100).
-        """
-        times = np.linspace(0, duration, steps)
-        voltages = [self.voltage_at_time(t) for t in times]
-
-        # Print results in a table-like format
-        print("Time (s)\tVoltage (V)")
-        for t, v in zip(times, voltages):
-            print(f"{t:.2f}\t\t{v:.2f}")
+    if resonance_frequencies is None:
+        print("No real resonant frequency found.")
+    elif isinstance(resonance_frequencies, tuple):
+        print(f"Resonant Frequencies (ω): {resonance_frequencies[0]:.2e} rad/s, {resonance_frequencies[1]:.2e} rad/s")
+    else:
+        print(f"Resonant Frequency (ω): {resonance_frequencies:.2e} rad/s")
