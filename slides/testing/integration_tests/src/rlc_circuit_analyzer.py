@@ -1,5 +1,5 @@
 from typing import Tuple, Union
-from equation_solver import EquationSolver
+from integration_tests.src.equation_solver import EquationSolver
 
 class RLCCircuitAnalyzer:
     def __init__(self, resistance: float, inductance: float, capacitance: float):
